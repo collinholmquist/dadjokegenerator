@@ -13,9 +13,16 @@ app.use("/public",express.static('public'))
 app.use(bodyparser.urlencoded({extended: true}))
 app.set("view engine", "ejs")
 
+//READ
+
 app.get('/', (req, res) => {
-    res.render('jokes.ejs');
+
+    Joke.find({}, (err, jokes) => {
+        res.render('jokes.ejs', {jokeList: jokes})
+    })
 })
+
+//CREATE
 
 app.post('/', async (req, res) => {
 
@@ -30,6 +37,40 @@ app.post('/', async (req, res) => {
         res.redirect('/')
     }
 })
+
+//UPDATE 
+
+app
+    .route("/edit/:id")
+    .get((req,res) => {
+
+        const id = req.params.id;
+
+        Joke.find({}, (err, jokes) => {
+            res.render("jokeEdit.ejs", {jokeList: jokes, idJoke: id});
+
+        })
+    })
+    .post((req, res) => {
+        const id = req.params.id;
+
+        Joke.findByIdAndUpdate(id, {content: req.body.content}, err => {
+            if(err) return res.send(500, err);
+            res.redirect("/");
+        })
+    })
+
+//DELETE
+
+app.route("/remove/:id").get((req, res) => {
+    const id = req.params.id;
+
+    Joke.findByIdAndRemove(id, err => {
+        if(err) return res.status(status).send(500, err);
+        res.redirect("/")
+    })
+})
+
 
 mongoose.connect(process.env.DB_CONNECT, { useNewUrlParser: true ,useUnifiedTopology: true}, () => {
     console.log("Connected to db!");

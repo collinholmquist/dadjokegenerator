@@ -7,24 +7,29 @@
 </head>
 
 <body>
-    <div class = "joke-container">
+    <div>
         <h2>Joke - List</h2>
-        <div class = "jokes">
+        <div>
             <form action = "/" method = "POST" class = "joke-header">
                 <input type="text" name="content">
-                <button type="submit"><span>✅</span></button>
+                <button type="submit">
+                    <span> ✅ </span>
+                </button>
             </form>
 
-            <ul class="jokes-list">
-                <li class = "jokes-list-item">
-                    <div class = "jokes-list-item-name">Sample Joke</div>
-                    <a href = "" class = "edit">
-                        <span>📝</span>
-                    </a>
-                    <a href="" class = "remove">
-                        <span>❌</span>
-                    </a>
-                </li>
+            <ul>
+                <% jokeList.forEach( details => { %>
+                        <li >
+                            <div><%= details.content %> </div>
+                            <a href = "/edit/<%= details._id %>" class = "edit">
+                                <span> 📝 </span>
+                            </a>
+                            <a href="/remove/<%= details._id %>" class = "remove">
+                                <span> ❌ </span>
+                            </a>
+                        </li>
+            
+                <% })%>  
             </ul>
         </div>
     </div>

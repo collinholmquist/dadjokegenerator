@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<head>
+    <title>Todo App</title>
+</head>
+
+<body>
+    <div>
+        <h2>To-Do List</h2>
+        <div>
+            <form action="" method="POST">
+                <input type="text" name="content">
+                <button type="submit">
+                    <span></span>
+                </button>
+            </form>
+            <ul>
+                <% jokeList.forEach(details => { %>
+                <% if (details._id == idJoke) { %>
+                    <li>
+                        <form action="/edit/<%= details._id %>" method="POST">
+                            <input type="text" value="<%= details.content %>" name="content">
+                            <button type="submit">Confirm
+                            </button>
+                            <a href="/" class="cancel">Cancel</a>
+                        </form>
+                    </li>
+                    <% } else { %>
+                        <li>
+                            <div>
+                                <%= details.content %>
+                            </div>
+                            <a href="/edit/<%= details._id %>" class="edit"> 
+                                <span>EDIT</span>
+                            </a>
+                            <a href="/remove/<%= details._id %>" class="remove"> 
+                                <span>REMOVE
+                                </span>
+                            </a>
+                        </li>
+                    <% } %>
+                <% }) %>
+            </ul>
+        </div>
+    </div>
+</body>
