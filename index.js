@@ -40,9 +40,7 @@ app.post('/', async (req, res) => {
 
 //UPDATE 
 
-app
-    .route("/edit/:id")
-    .get((req,res) => {
+app.route("/edit/:id").get((req,res) => {
 
         const id = req.params.id;
 
