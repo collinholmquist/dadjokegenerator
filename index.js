@@ -4,6 +4,8 @@ const dotenv = require('dotenv')
 const app = express()
 const mongoose = require('mongoose')
 const Joke = require("./models/Joke")
+const request = require('request')
+const axios = require('axios')
 
 dotenv.config()
 
@@ -13,6 +15,20 @@ app.use("/public",express.static('public'))
 app.use(bodyparser.urlencoded({extended: true}))
 app.set("view engine", "ejs")
 
+//Handle Random Dad Joke
+
+const getJokes = async () => {
+    try {
+       return await axios.get('https://icanhazdadjoke.com/', {
+       headers: {
+        'Accept': 'application/json'
+       }})
+        
+    } catch(error) {
+        console.error(error)
+    }
+}
+
 //READ
 
 app.get('/', (req, res) => {
@@ -20,17 +36,25 @@ app.get('/', (req, res) => {
     Joke.find({}, (err, jokes) => {
         res.render('jokes.ejs', {jokeList: jokes})
     })
+
 })
 
 //CREATE
 
 app.post('/', async (req, res) => {
 
-    const oneJoke = new Joke({
-        content: req.body.content
-    })
-    
+    //if req.body.content is empty, create a new joke by randomly grabbing one from the API. 
     try{
+    
+        const oneJoke = new Joke({})
+
+        if(typeof req.body.content !== 'undefined') {
+                oneJoke.content =  req.body.content
+        } else{
+            const randomJoke = await getJokes();
+            oneJoke.content = randomJoke.data.joke
+        }
+
         await oneJoke.save()
         res.redirect('/')
     } catch (err) {
