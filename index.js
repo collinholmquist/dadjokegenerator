@@ -4,7 +4,7 @@ const dotenv = require('dotenv')
 const app = express()
 const mongoose = require('mongoose')
 const Joke = require("./models/Joke")
-const request = require('request')
+
 const axios = require('axios')
 
 dotenv.config()

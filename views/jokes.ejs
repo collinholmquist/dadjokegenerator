@@ -3,25 +3,45 @@
 <head>
     <title>Dad Joke Wednesday</title>
 
-    <link rel = 'stylesheet' href="/public/style.css" type ="text/css"/>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css"
+    />
+    <link rel="stylesheet" href="../node_modules/milligram/dist/milligram.min.css" />
+    <link rel="stylesheet" href="https://milligram.io/styles/main.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/milligram/1.4.1/milligram.css">
 </head>
 
+<style>
+    body{
+        padding: 20px;
+        max-width: 600px; 
+        margin: auto; 
+    }
+    li {
+        list-style-type: none;
+    }
+</style>
+
 <body>
-    <div>
-        <h2>Joke - List</h2>
+    <div class = 'joke-container'>
+        <h2>Dad Jokes</h2>
         <div>
             <form action = "/" method = "POST">
                 <button type = 'submit'>
-                    <span>GETJOKE</span>
-                    
+                    Get Random Joke
                 </button>
             </form>
 
 
-            <form action = "/" method = "POST" class = "joke-header">
+            <form action = "/" method = "POST">
                 <input type="text" name="content">
-                <button type="submit">
-                    <span> ✅ </span>
+                <button class = 'button' type="submit">
+                    Add new Joke
                 </button>
             </form>
 
@@ -29,14 +49,17 @@
                 <% jokeList.forEach( details => { %>
                         <li >
                             <div><%= details.content %> </div>
-                            <a href = "/edit/<%= details._id %>" class = "edit">
-                                <span> 📝 </span>
-                            </a>
-                            <a href="/remove/<%= details._id %>" class = "remove">
-                                <span> ❌ </span>
-                            </a>
+                                
+                                <button onclick = "window.location.href = '/edit/<%= details._id%>';" class = 'button' class = 'edit'>
+                                    Edit
+                                </button> 
+                                  
+
+                                <button onclick = "window.location.href = '/remove/<%= details._id%>';" class = 'button' class = 'remove'>
+                                    Remove 
+                                </button> 
+                            
                         </li>
-            
                 <% })%>  
             </ul>
         </div>
