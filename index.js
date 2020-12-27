@@ -30,7 +30,6 @@ const getJokes = async () => {
 }
 
 //READ
-
 app.get('/', (req, res) => {
 
     Joke.find({}, (err, jokes) => {

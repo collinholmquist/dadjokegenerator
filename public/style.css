@@ -1,2 +1,28 @@
+body{
+    padding: 20px;
+    max-width: 800px; 
+    margin: auto; 
+}
+li {
+    list-style-type: none;
+}
 
+.button-small {
+    font-size: .8rem;
+    height: 2.8rem;
+    line-height: 2.8rem;
+    padding: 0 1.5rem;
+  }
+
+  
+
+  .inline-form {
+      display: flex;
+      flex-flow: row;
+    
+  }
+
+  .inline-elements {
+      margin: 0px 3px; 
+  }
 

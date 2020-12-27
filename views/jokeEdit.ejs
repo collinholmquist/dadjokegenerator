@@ -14,34 +14,26 @@
     <link rel="stylesheet" href="../node_modules/milligram/dist/milligram.min.css" />
     <link rel="stylesheet" href="https://milligram.io/styles/main.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/milligram/1.4.1/milligram.css">
+    <link rel="stylesheet" href = '../public/style.css' />
 </head>
-<style>
-    body{
-        padding: 20px; 
-        max-width: 600px;
-        margin: auto;
-    }
-</style>
 
 <body>
     <div > 
         <h2>Dad Jokes</h2>
         <div>
-            <form action="" method="POST">
-                <input type="text" name="content">
-                <button type="submit">
-                    <span></span>
-                </button>
-            </form>
             <ul>
                 <% jokeList.forEach(details => { %>
                 <% if (details._id == idJoke) { %>
                     <li>
                         <form action="/edit/<%= details._id %>" method="POST">
                             <input type="text" value="<%= details.content %>" name="content">
-                            <button type="submit">Confirm
+                            <button type="submit" class = 'button'>
+                                Confirm
                             </button>
-                            <a href="/" class="cancel">Cancel</a>
+                            <button onclick = "window.location.href = '/'" class = 'button' class = 'cancel' >
+                                Cancel
+                            </button>
+                            
                         </form>
                     </li>
                     <% } else { %>

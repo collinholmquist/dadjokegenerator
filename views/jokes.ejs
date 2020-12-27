@@ -14,51 +14,43 @@
     <link rel="stylesheet" href="../node_modules/milligram/dist/milligram.min.css" />
     <link rel="stylesheet" href="https://milligram.io/styles/main.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/milligram/1.4.1/milligram.css">
+    <link rel="stylesheet" href = "../public/style.css" />
 </head>
-
-<style>
-    body{
-        padding: 20px;
-        max-width: 600px; 
-        margin: auto; 
-    }
-    li {
-        list-style-type: none;
-    }
-</style>
 
 <body>
     <div class = 'joke-container'>
         <h2>Dad Jokes</h2>
-        <div>
-            <form action = "/" method = "POST">
-                <button type = 'submit'>
-                    Get Random Joke
-                </button>
-            </form>
+        <div >
+            <div >
+                <form action = "/" method = "POST">
+                    <button type = 'submit'>
+                        Get Random Joke
+                    </button>
+                </form>
 
 
-            <form action = "/" method = "POST">
-                <input type="text" name="content">
-                <button class = 'button' type="submit">
-                    Add new Joke
-                </button>
-            </form>
-
+                <form action = "/" method = "POST" class = 'inline-form'>
+                    <input type="text" name="content" class = 'inline-elements' placeholder="Enter a Joke">
+                    <button class = 'button inline-elements' type="submit">
+                        Submit
+                    </button>
+                </form>
+            </div>
             <ul>
                 <% jokeList.forEach( details => { %>
                         <li >
-                            <div><%= details.content %> </div>
-                                
-                                <button onclick = "window.location.href = '/edit/<%= details._id%>';" class = 'button' class = 'edit'>
+                            <div><%= details.content %> 
+                            
+                                <button onclick = "window.location.href = '/edit/<%= details._id%>';" class = 'button button-small button-outline' class = 'edit'>
                                     Edit
                                 </button> 
                                   
 
-                                <button onclick = "window.location.href = '/remove/<%= details._id%>';" class = 'button' class = 'remove'>
+                                <button onclick = "window.location.href = '/remove/<%= details._id%>';" class = 'button button-small button-outline' class = 'remove'>
                                     Remove 
                                 </button> 
-                            
+                            </div>
+                             
                         </li>
                 <% })%>  
             </ul>
