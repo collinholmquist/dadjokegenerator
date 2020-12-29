@@ -21,6 +21,22 @@
     <div > 
         <h1>&#128104 Dad Jokes</h1>
         <div>
+            <div>
+                <form action = "/" method = "POST" class = 'inline-form'>
+                    <input type="text" name="content" class = 'inline-elements' placeholder="compose a new joke">
+                    <button class = 'button inline-elements' type="submit" style = "margin-left: 5px;">
+                        Submit
+                    </button>
+                </form>
+                <form action = "/" method = "POST">
+                    <button type = 'submit'>
+                        Add a Random Joke
+                    </button>
+                </form>
+
+            </div>
+
+            <h2>Jokes: </h2>
             <ul>
                 <% jokeList.forEach(details => { %>
                 <% if (details._id == idJoke) { %>
@@ -38,17 +54,24 @@
                     </li>
                     <% } else { %>
                         <li>
-                            <div>
-                                <%= details.content %>
+                            <div class = 'inline-jokes'>
+                                <div class = 'inline-content'>
+                                    <%= details.content %> 
+                                </div>
+                                <div class ='edit-remove'>
+                                    <button onclick = "window.location.href = '/edit/<%= details._id%>';" 
+                                            class = 'button button-small button-outline' 
+                                            class = 'edit'>
+                                            Edit
+                                    </button> 
+                                    <button onclick = "window.location.href = '/remove/<%= details._id%>';" 
+                                            class = 'button button-small button-outline' 
+                                            class = 'remove'>
+                                            Delete 
+                                    </button> 
+                                </div> 
                             </div>
-                            <button onclick = "window.location.href = '/edit/<%= details._id %>'" class = 'button button-small edit'>
-                                Edit
-                            </button>
-                            <button onclick = "window.location.href = '/remove/<%= details._id %>'" class = 'button button-small edit'>
-                                Delete
-                            </button>
-                                
-                            </a>
+                           
                         </li>
                     <% } %>
                 <% }) %>
