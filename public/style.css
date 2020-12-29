@@ -14,15 +14,39 @@ li {
     padding: 0 1.5rem;
   }
 
-  
-
-  .inline-form {
+.inline-form {
       display: flex;
       flex-flow: row;
-    
+
   }
 
-  .inline-elements {
+.inline-elements {
       margin: 0px 3px; 
   }
 
+.inline-jokes {
+    display: flex;
+    flex-direction: row;
+    max-width: 800px;
+    padding: 0px 1rem;
+    margin: 2rem 1rem;
+    /*border: 2px solid black;*/
+}
+
+.edit-remove {
+    width: 150px;
+    max-width: 150px;
+    justify-content:right;
+    /*border: 2px solid red;*/
+}
+
+.inline-content {
+    width: 650px;
+    max-width: 650px;
+    /*border: 2px solid purple;*/
+}
+
+.button-align {
+    float:right;
+    margin: 1px;
+}

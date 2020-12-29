@@ -19,7 +19,7 @@
 
 <body>
     <div class = 'joke-container'>
-        <h2>Dad Jokes</h2>
+        <h1> &#128104 Dad Jokes</h1>
         <div >
             <div >
                 <form action = "/" method = "POST">
@@ -30,27 +30,35 @@
 
 
                 <form action = "/" method = "POST" class = 'inline-form'>
-                    <input type="text" name="content" class = 'inline-elements' placeholder="Enter a Joke">
+                    <input type="text" name="content" class = 'inline-elements' placeholder="compose a new joke">
                     <button class = 'button inline-elements' type="submit">
                         Submit
                     </button>
                 </form>
             </div>
+
+            <h2>Jokes: </h2>
             <ul>
                 <% jokeList.forEach( details => { %>
                         <li >
-                            <div><%= details.content %> 
-                            
-                                <button onclick = "window.location.href = '/edit/<%= details._id%>';" class = 'button button-small button-outline' class = 'edit'>
-                                    Edit
-                                </button> 
-                                  
-
-                                <button onclick = "window.location.href = '/remove/<%= details._id%>';" class = 'button button-small button-outline' class = 'remove'>
-                                    Remove 
-                                </button> 
+                            <div class = 'inline-jokes'>
+                                <div class = 'inline-content'>
+                                    <%= details.content %> 
+                                </div>
+                                <div class ='edit-remove'>
+                                    <button onclick = "window.location.href = '/edit/<%= details._id%>';" 
+                                            class = 'button button-small button-outline button-align' 
+                                            class = 'edit'>
+                                            Edit
+                                    </button> 
+                                    <button onclick = "window.location.href = '/remove/<%= details._id%>';" 
+                                            class = 'button button-small button-outline button-align' 
+                                            class = 'remove'>
+                                            Delete 
+                                    </button> 
+                                </div> 
                             </div>
-                             
+                           
                         </li>
                 <% })%>  
             </ul>
