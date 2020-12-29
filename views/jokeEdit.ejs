@@ -41,12 +41,13 @@
                             <div>
                                 <%= details.content %>
                             </div>
-                            <a href="/edit/<%= details._id %>" class="edit"> 
-                                <span>EDIT</span>
-                            </a>
-                            <a href="/remove/<%= details._id %>" class="remove"> 
-                                <span>REMOVE
-                                </span>
+                            <button onclick = "window.location.href = '/edit/<%= details._id %>'" class = 'button button-small edit'>
+                                Edit
+                            </button>
+                            <button onclick = "window.location.href = '/remove/<%= details._id %>'" class = 'button button-small edit'>
+                                Remove
+                            </button>
+                                
                             </a>
                         </li>
                     <% } %>

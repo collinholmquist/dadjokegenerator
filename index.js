@@ -39,8 +39,6 @@ app.get('/', (req, res) => {
 })
 
 //CREATE
-
-
 app.post('/', async (req, res) => {
 
     //if req.body.content is empty, create a new joke by randomly grabbing one from the API. 
