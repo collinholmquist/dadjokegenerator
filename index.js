@@ -94,6 +94,8 @@ app.route("/remove/:id").get((req, res) => {
 
 mongoose.connect(process.env.DB_CONNECT, { useNewUrlParser: true ,useUnifiedTopology: true}, () => {
     console.log("Connected to db!");
+
+    const port = process.env.PORT || 3000;
     
-    app.listen(3000, () => console.log("Server Up and running"));
+    app.listen(port, () => console.log("Server Up and running"));
 });
