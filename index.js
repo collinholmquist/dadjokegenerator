@@ -10,6 +10,7 @@ const axios = require('axios')
 dotenv.config()
 
 mongoose.set("useFindAndModify", false)
+const port = process.env.PORT || 3000;
 
 app.use("/public",express.static('public'))
 app.use(bodyparser.urlencoded({extended: true}))
@@ -91,11 +92,5 @@ app.route("/remove/:id").get((req, res) => {
     })
 })
 
-
-mongoose.connect(process.env.DB_CONNECT, { useNewUrlParser: true ,useUnifiedTopology: true}, () => {
-    console.log("Connected to db!");
-
-    const port = process.env.PORT || 3000;
-    
-    app.listen(port, () => console.log("Server Up and running"));
-});
+mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true ,useUnifiedTopology: true});
+app.listen(port, () => console.log("Server Up and running"));
